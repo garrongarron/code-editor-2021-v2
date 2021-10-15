@@ -1,5 +1,6 @@
 import eventBus from "../basic/EventBus.js"
 import build from "./Builder.js"
+import showDownAdapter from "./ShowDownAdapter.js"
 
 class NodeBuilder {
     constructor() {
@@ -38,6 +39,13 @@ class NodeBuilder {
             currentNode.remove()
             node = imgContainer
         }
+        if (data.tag == 'md') {
+            node = build('div', '', 'md-class')
+            showDownAdapter.convert(node, data.text)
+            this.core.insertAfter(node, currentNode)
+
+            currentNode.remove()
+        }
 
         if (this.styleList.includes(data.tag)) {
             node = build('pre', null, 'language-' + data.tag)
@@ -67,6 +75,10 @@ class NodeBuilder {
             node.setAttribute('src', data.blob)
             node.setAttribute('title', 'Ilustration')
             node = imgContainer
+        }
+        if (data.tag == 'md') {
+            node = build('div', '', 'md-class', this.core.container)
+            showDownAdapter.convert(node, data.text)
         }
 
         if (this.styleList.includes(data.tag)) {

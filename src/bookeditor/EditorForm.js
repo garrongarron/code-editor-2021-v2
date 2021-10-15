@@ -54,8 +54,9 @@ class EditorForm extends Component {
             </div>
             <div class="typesContainer">
                 <button class="h1" click="formatting">h1</button>
-                <button class="h2" click="formatting">h2</button>
+                <!-- <button class="h2" click="formatting">h2</button> -->
                 <button class="p" click="formatting">p</button>
+                <button class="md" click="formatting">md</button>
                 <button class="html" click="formatting">html</button>
                 <button class="css" click="formatting">css</button>
                 <button class="javascript" click="formatting">js</button>
