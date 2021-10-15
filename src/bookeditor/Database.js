@@ -60,7 +60,6 @@ class Database {
         })
         eventBus.subscribe('database.update.line.number',(params)=>{
             this.database[params.index].lineNumber = params.lineNumber
-            console.log(this.database[params.index]);
             this.save()
             eventBus.dispatch('request.dom.update.node', {
                 index: params.index,

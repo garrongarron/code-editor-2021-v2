@@ -28,6 +28,7 @@ body {
     right: 0;
     padding: 1em;
     width: 400px;
+    z-index: 1;
 }
 
 .small {

@@ -12,6 +12,20 @@ class DomController {
         eventBus.subscribe('textarea.keyup', this.textareaKeyup)
         eventBus.subscribe('duplicate.btn', this.duplicateBtn)
         eventBus.subscribe('request.dom.duplicate.node', this.requestDomDuplicateNode)
+        eventBus.subscribe('update.node.tag', this.updateNodeTag)
+        eventBus.subscribe('update.node.line.number', this.updateNodeLineNumber)
+    }
+    updateNodeLineNumber = (lineNumber) => {
+        eventBus.dispatch('database.update.line.number', {
+            index: core.getIndex(),
+            lineNumber
+        })
+    }
+    updateNodeTag = (tag) => {
+        eventBus.dispatch('database.update.tag', {
+            index: core.getIndex(),
+            tag
+        })
     }
     requestDomDuplicateNode = (params) => {
         let clone = core.currentNode().cloneNode(true)
