@@ -35,6 +35,7 @@ class Bootstrap {
         textarea.stop()
         domController.stop()
         nodeBuilder.stop()
+        database.stop()
         exportFile.stop()
         importFile.stop()
         imageLoader.stop()
