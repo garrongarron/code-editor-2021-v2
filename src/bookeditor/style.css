@@ -32,7 +32,7 @@ body {
     z-index: 1;
 }
 
-.small {
+.lateral-forms .small {
     /* opacity: .5; */
     left: 0;
     top: unset;
@@ -49,24 +49,24 @@ body {
     padding: .5em;
 }
 
-.btnContainer, .typesContainer, .actionsContainer, .linenumberContainer {
+.lateral-forms .btnContainer, .typesContainer, .actionsContainer, .linenumberContainer {
     display: flex;
     flex-flow: row;
     bottom: 0;
     position: relative;
 }
 
-.btnContainer button, .typesContainer button {
+.lateral-forms .btnContainer button, .typesContainer button {
     width: 100%;
 }
 
-.actionsContainer {
+.lateral-forms .actionsContainer {
     flex-flow: column;
 }
 
-.linenumberContainer > input,
-.linenumberContainer > button,
-.linenumberContainer > div{
+.lateral-forms .linenumberContainer > input,
+.lateral-forms .linenumberContainer > button,
+.lateral-forms .linenumberContainer > div{
     width: 100%;
     text-align: center;
     /* display: flex;
@@ -116,7 +116,7 @@ pre, code {
 
 /*DELETE*/
 
-.red {
+.lateral-forms .red {
     background-color: red !important;
 }
 
