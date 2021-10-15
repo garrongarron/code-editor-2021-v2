@@ -1,18 +1,19 @@
 import Component from "../../../js/Component.js";
 import eventBus from "../basic/EventBus.js";
+import deleteBtn from "./DeleteBtn.js";
 
 class EditorForm extends Component {
-    // setState() { return { n: JSON.parse(localStorage.getItem('n')) || 0 } }
-    // setChildComponent() { return [Header]; }
     addEventListener() { return ['click'] }
-    // doSomething(e) {
-    //     console.log('Event: ' + e )
-    //     this.state.n++
-    //     localStorage.setItem('n', JSON.stringify(this.state.n));
-    //     this.setNewState(this.state)
-    // }
     duplicateBtn() {
         eventBus.dispatch('duplicate.btn', null)
+    }
+    deleteBtn(e) {
+        e.target.classList.toggle('red')
+        if (e.target.classList.contains('red')) {
+            deleteBtn.readyToDelete()
+        } else {
+            deleteBtn.clean()
+        }
     }
     template() {
         return `
@@ -20,7 +21,7 @@ class EditorForm extends Component {
             <textarea></textarea>
             <div class="btnContainer">
                 <button class="duplicateBtn" click="duplicateBtn">Duplicate</button>
-                <button class="deleteBtn">Delete</button>
+                <button class="deleteBtn" click="deleteBtn">Delete</button>
             </div>
             <div class="typesContainer">
                 <button class="h1">h1</button>
