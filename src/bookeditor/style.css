@@ -1,0 +1,194 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style: none;
+    word-wrap: break-word;
+}
+.hide{
+    display: none !important;
+}
+.search-fixed{
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    color: blue;
+}
+body {
+    font-family: sans-serif;
+}
+
+/*landingPage*/
+
+.lateral-forms {
+    background-color: rgba(0, 0, 0, .5);
+    /* height: 100vh; */
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 1em;
+    width: 400px;
+}
+
+.small {
+    /* opacity: .5; */
+    left: 0;
+    top: unset;
+    height: unset;
+    bottom: 0;
+}
+
+.lateral-forms textarea {
+    width: 100%;
+    min-height: 80px;
+    max-height: 80vh;
+    height: min-content;
+    font-family: sans-serif;
+    padding: .5em;
+}
+
+.btnContainer, .typesContainer, .actionsContainer, .linenumberContainer {
+    display: flex;
+    flex-flow: row;
+    bottom: 0;
+    position: relative;
+}
+
+.btnContainer button, .typesContainer button {
+    width: 100%;
+}
+
+.actionsContainer {
+    flex-flow: column;
+}
+
+.linenumberContainer > input,
+.linenumberContainer > button,
+.linenumberContainer > div{
+    width: 100%;
+    text-align: center;
+    /* display: flex;
+    flex-flow: row; */
+}
+
+
+/*Container*/
+
+#container {
+    width: 800px;
+    min-height: 720px;
+    margin: auto ;
+    padding: 2em;
+    padding: 0em 2em;
+    /* background-image: url(../img/A4.png); */
+    background-size: contain;
+    background-position-y: 0;
+    border-left: 30px solid rgb(0, 84, 180);
+    border-right: 30px solid rgb(0, 84, 180);
+    border: 30px solid rgb(0, 84, 180);
+    /* border-radius: 30px; */
+    background-color: rgb(211, 212, 141);
+}
+
+p {
+    text-align: justify;
+}
+.image-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    padding: 1em ;
+}
+img{
+    max-width: 100%;
+    object-fit: cover;
+    box-shadow: 2px 2px 8px black;
+}
+
+/* PRE CODE */
+
+pre, code {
+    width: 100%;
+}
+
+/*DELETE*/
+
+.red {
+    background-color: red !important;
+}
+
+/*Visuale elements*/
+
+h1 {
+    padding-top: 1em;
+    padding-bottom: .25em;
+}
+p, h2{
+    padding: .2em 0;
+}
+
+/*SELECTOR CURSOR NODE*/
+.node-selected::before{
+    content: ' ';
+    width: 50px;
+    height: 5px;
+    position: absolute;
+    margin-left: -50px;
+    background-color: red;
+}
+
+/*searcher*/
+.searcher{
+    width: 100;
+    padding: 1em;
+    background-color: gray;
+    min-height: 100vh;
+    color: white;
+}
+.searcher > .searcher-header,
+.searcher > .searcher-body
+{
+    background-color: green;
+    min-height: 50px;
+    width: 100;
+    padding: 1em;
+}
+.searcher > .searcher-body{
+    /* background-color: blue; */
+    background-color: white;
+    min-height: 80vh;
+    color: rgb(48, 48, 48);
+}
+.searcher > .searcher-body >ul>li>b{
+    display: block;
+    cursor: pointer;
+    color: blue;
+    padding-top: .25em;
+}
+.searcher > .searcher-body >ul>li>i{
+    display: block;
+    padding-bottom: .5em;
+    padding-top: .25em;
+    
+}
+
+/*form-new-chapter*/
+.form-new-chapter{
+    background-color: red;
+    padding: 1em;
+    box-sizing: border-box;
+    position: relative;
+}
+.form-new-chapter> input[type='text'],
+.form-new-chapter > textarea{
+    width: 100%;
+    font-family: sans-serif;
+    margin-bottom: 1em auto;
+    box-sizing: border-box;
+    position: relative;
+}
+.fix-bottom{
+    position: fixed;
+    bottom: 0;
+}
