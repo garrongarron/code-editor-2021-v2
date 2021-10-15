@@ -60,6 +60,7 @@ class DomController {
         core.setIndex(0)//to point current node
         textarea.node.value = data[0].text
         database.loadData(data)
+        Prism.highlightAll();
     }
     stop() {
         eventBus.unSubscribe('dom.render.page', this.domRenderPage)

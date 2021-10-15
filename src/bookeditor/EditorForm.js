@@ -1,5 +1,8 @@
 import Component from "../../../js/Component.js";
 import eventBus from "../basic/EventBus.js";
+import core from "./Core.js";
+import database from "./Database.js";
+import dataProvider from "./DataProvider.js";
 import deleteBtn from "./DeleteBtn.js";
 
 class EditorForm extends Component {
@@ -15,11 +18,33 @@ class EditorForm extends Component {
             deleteBtn.clean()
         }
     }
-    formatting(e){
+    formatting(e) {
         eventBus.dispatch('update.node.tag', e.target.classList[0])
     }
     lineNumber = (e) => {
         eventBus.dispatch('update.node.line.number', e.target.value)
+    }
+    exportData() {
+        eventBus.dispatch('export.content.data', database.database)
+    }
+    exportHTML() {
+        eventBus.dispatch('export.content.html', null)
+    }
+    upload(e) {
+        console.log(e.target.parentNode.querySelector('input'));
+        e.target.parentNode.querySelector('input').click();
+    }
+    inputToUpload(e) {
+        console.log('bbbbbbbbbbbbbbbbbbbb');
+        eventBus.dispatch('upload.content.json', {
+            e: e,
+            callback: (data) => {
+                localStorage.setItem('data', data);
+                core.container.innerHTML = ''
+                dataProvider.start()
+                console.log('aaaaaaaaaaaaaaaaaa');
+            }
+        })
     }
     template() {
         return `
@@ -47,10 +72,10 @@ class EditorForm extends Component {
                 <button class="lineNumberBtn">1-| Off</button>
             </div>
             <div class="actionsContainer">
-                <button class="up">Upload Json</button>
-                <input type="file" accept="application/JSON" style="display:none">
-                <button class="down">Download Json</button>
-                <button class="export">Download HTML</button>
+                <button class="up" click="upload">Upload Json</button>
+                <input type="file" accept="application/JSON" style="display:none" change="inputToUpload">
+                <button class="down" click="exportData">Download Json</button>
+                <button class="export" click="exportHTML">Download HTML</button>
                 <button class="hide-show">hide-show</button>
             </div>
             <div class="database-section">

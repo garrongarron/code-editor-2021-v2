@@ -1,4 +1,6 @@
 import cache from "../basic/Cache.js";
+import exportFile from "../basic/Export.js";
+import importFile from "../basic/Import.js";
 import container from "./Container.js";
 import core from "./Core.js";
 import database from "./Database.js";
@@ -23,13 +25,16 @@ class Bootstrap {
         domController.start()
         nodeBuilder.start(core)
         database.start()
-        
+        exportFile.start()
+        importFile.start()
         this.tick()
     }
     stop() { 
         textarea.stop()
         domController.stop()
         nodeBuilder.stop()
+        exportFile.stop()
+        importFile.stop()
         cache.appendChild(editorForm.node)
         cache.appendChild(container.node)
     }
