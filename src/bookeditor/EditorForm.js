@@ -1,21 +1,25 @@
 import Component from "../../../js/Component.js";
+import eventBus from "../basic/EventBus.js";
 
 class EditorForm extends Component {
     // setState() { return { n: JSON.parse(localStorage.getItem('n')) || 0 } }
     // setChildComponent() { return [Header]; }
-    // addEventListener() { return ['click'] }
+    addEventListener() { return ['click'] }
     // doSomething(e) {
     //     console.log('Event: ' + e )
     //     this.state.n++
     //     localStorage.setItem('n', JSON.stringify(this.state.n));
     //     this.setNewState(this.state)
     // }
-    template(){
+    duplicateBtn() {
+        eventBus.dispatch('duplicate.btn', null)
+    }
+    template() {
         return `
         <div class="lateral-forms">
             <textarea></textarea>
             <div class="btnContainer">
-                <button class="duplicateBtn">Duplicate</button>
+                <button class="duplicateBtn" click="duplicateBtn">Duplicate</button>
                 <button class="deleteBtn">Delete</button>
             </div>
             <div class="typesContainer">

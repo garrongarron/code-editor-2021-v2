@@ -10,6 +10,28 @@ class DomController {
     start() {
         eventBus.subscribe('dom.render.page', this.domRenderPage)
         eventBus.subscribe('textarea.keyup', this.textareaKeyup)
+        eventBus.subscribe('duplicate.btn', this.duplicateBtn)
+        eventBus.subscribe('request.dom.duplicate.node', this.requestDomDuplicateNode)
+    }
+    requestDomDuplicateNode = (params) => {
+        let clone = core.currentNode().cloneNode(true)
+        core.insertAfter(clone, core.currentNode())
+        core.setClickOnNode(clone, params.data.text)
+    }
+    duplicateBtn = () => {
+        let text = textarea.node.value
+        text = (text == '') ? 'Dummy Text' : text
+        if (core.getIndex() == null) {
+            eventBus.dispatch('create.first', {
+                index: 0, data: { tag: 'h1', text }
+            })
+            core.setIndex(0)
+            //por que no hay database????
+        } else {
+            eventBus.dispatch('database.duplicate', core.getIndex())
+            let index = core.getIndex()
+            core.setIndex(++index)
+        }
     }
     textareaKeyup = (text) => {
         if (core.getIndex() == null) return
