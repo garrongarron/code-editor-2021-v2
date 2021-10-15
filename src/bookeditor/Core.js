@@ -1,4 +1,5 @@
 import eventBus from "../basic/EventBus.js"
+import dataProvider from "./DataProvider.js"
 
 class Core{
     constructor(){
@@ -7,8 +8,16 @@ class Core{
     }
     start(container){
         this.container = container
+        eventBus.subscribe('core.data.loaded', this.loadData)
     }
-    stop(){}
+    loadData = (data) => {
+        localStorage.setItem('data', data);
+        this.container.innerHTML = ''
+        dataProvider.start()
+    }
+    stop(){
+        eventBus.unSubscribe('core.data.loaded', this.loadData)
+    }
     getIndex(){
         return this.index
     }
@@ -30,13 +39,10 @@ class Core{
             eventBus.dispatch('click.on.container.node', text)
         })
     }
-
     //tool
     insertAfter(newNode, existingNode) {
         existingNode.parentNode.insertBefore(newNode, existingNode.nextSibling);
     }
-
-
 }
 
 const core = new Core()

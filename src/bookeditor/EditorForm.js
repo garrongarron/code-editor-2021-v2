@@ -35,16 +35,14 @@ class EditorForm extends Component {
         e.target.parentNode.querySelector('input').click();
     }
     inputToUpload(e) {
-        console.log('bbbbbbbbbbbbbbbbbbbb');
-        eventBus.dispatch('upload.content.json', {
-            e: e,
-            callback: (data) => {
-                localStorage.setItem('data', data);
-                core.container.innerHTML = ''
-                dataProvider.start()
-                console.log('aaaaaaaaaaaaaaaaaa');
-            }
-        })
+        eventBus.dispatch('upload.content.json', e)
+    }
+    uploadImg(e) {
+        console.log(e.target.parentNode.querySelector('input'));
+        e.target.parentNode.querySelector('input').click();
+    }
+    inputToUploadImg(e) {
+        eventBus.dispatch('image.loader.start',e )
     }
     template() {
         return `
@@ -63,8 +61,8 @@ class EditorForm extends Component {
                 <button class="javascript" click="formatting">js</button>
             </div>
             <div class="linenumberContainer">
-                <button class="i">ImgUp</button>
-                <input type="file" accept="image/png, image/jpeg" style="display:none">
+                <button class="i" click="uploadImg">ImgUp</button>
+                <input type="file" accept="image/png, image/jpeg" style="display:none" change="inputToUploadImg">
                 <button class="i">-</button>
                 <button class="i">-</button>
                 <input class="lineNumber" type="number" placeholder="Line number" click="lineNumber" change="lineNumber">

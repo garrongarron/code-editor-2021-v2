@@ -14,6 +14,17 @@ class DomController {
         eventBus.subscribe('request.dom.duplicate.node', this.requestDomDuplicateNode)
         eventBus.subscribe('update.node.tag', this.updateNodeTag)
         eventBus.subscribe('update.node.line.number', this.updateNodeLineNumber)
+        eventBus.subscribe('core.image.loaded', this.coreImageLoaded)
+    }
+    coreImageLoaded = (blob) => {
+        console.log('asd');
+        eventBus.dispatch('database.set.img', {
+            index: core.getIndex(),
+            tag: 'img',
+            text: 'Image',
+            blob
+        })
+        textarea.node.value = 'Image'
     }
     updateNodeLineNumber = (lineNumber) => {
         eventBus.dispatch('database.update.line.number', {

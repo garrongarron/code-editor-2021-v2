@@ -1,5 +1,6 @@
 import cache from "../basic/Cache.js";
 import exportFile from "../basic/Export.js";
+import imageLoader from "../basic/ImageLoader.js";
 import importFile from "../basic/Import.js";
 import container from "./Container.js";
 import core from "./Core.js";
@@ -27,6 +28,7 @@ class Bootstrap {
         database.start()
         exportFile.start()
         importFile.start()
+        imageLoader.start()
         this.tick()
     }
     stop() { 
@@ -35,6 +37,7 @@ class Bootstrap {
         nodeBuilder.stop()
         exportFile.stop()
         importFile.stop()
+        imageLoader.stop()
         cache.appendChild(editorForm.node)
         cache.appendChild(container.node)
     }

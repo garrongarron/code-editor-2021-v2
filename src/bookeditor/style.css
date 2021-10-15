@@ -135,8 +135,17 @@ p, h2{
     width: 50px;
     height: 5px;
     position: absolute;
-    margin-left: -50px;
+    left: 20px;
+    left: 0px;
+    font-size: 1rem !important;
+    font-family: sans-serif;
+    font-weight: normal;
+    /* margin-left: -50px; */
     background-color: red;
+    color: white;
+    /* border-radius: 10px; */
+    /* padding:.5rem; */
+    /* opacity: .5; */
 }
 
 /*searcher*/
